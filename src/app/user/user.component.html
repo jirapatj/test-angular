@@ -1,0 +1,19 @@
+<h1>Address</h1>
+<ul>
+  <li>Name : {{name}}</li>
+  <li>Age : {{age}}</li>
+  <li>Email : {{email}}</li>
+  <li>Address : {{address.street}} {{address.city}} {{address.province}} {{address.postcode}}</li>
+</ul>
+
+<h2>Skills</h2>
+<form (submit)="addSkill(skill.value)">
+  <div>
+    <label>Skill : </label>
+    <input type="text" #skill />
+  </div>
+</form>
+
+<ul>
+  <li *ngFor="let skill of skills; let i = index"> {{i+1}}. {{skill}}</li>
+</ul>
