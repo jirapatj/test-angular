@@ -1,10 +1,65 @@
-<h1>Address</h1>
+<h1>User Detail</h1>
+
+<input type="button" value=" Toggle Form " (click)="toggleEditForm()" />
+
+<div *ngIf="toggleForm">
+  <form>
+    <h1>Edit Profile</h1>
+    <div>
+      <label>ID : </label>
+      <input type="text" [(ngModel)]="user.id" name="user.id" />
+    </div>
+    <div>
+      <label>Username : </label>
+      <input type="text" [(ngModel)]="user.username" name="user.username" />
+    </div>
+    <div>
+      <label>Name : </label>
+      <input type="text" [(ngModel)]="user.name" name="user.name" />
+    </div>
+    <div>
+      <label>Phone : </label>
+      <input type="text" [(ngModel)]="user.phone" name="user.phone" />
+    </div>
+    <div>
+      <br/>
+      <input type="button" value=" Save " (click)="saveUser(user)" />
+    </div>
+  </form>
+</div>
+
+<h1>User</h1>
+<ul>
+  <li *ngFor="let user of users; let i = index"> {{i+1}}. {{user.username}} {{user.name}} {{user.phone}}
+    <input type="button" value=" Edit " (click)="getUser(user)" />
+  </li>
+</ul>
+
+<hr />
+<h1>User</h1>
 <ul>
   <li>Name : {{name}}</li>
   <li>Age : {{age}}</li>
   <li>Email : {{email}}</li>
   <li>Address : {{address.street}} {{address.city}} {{address.province}} {{address.postcode}}</li>
 </ul>
+
+<form>
+  <h1>Edit Profile</h1>
+  <div>
+    <label>Name : </label>
+    <input type="text" [(ngModel)]="name" name="name" />
+  </div>
+  <div>
+    <label>Age : </label>
+    <input type="text" [(ngModel)]="age" name="age" />
+  </div>
+  <div>
+    <label>Email : </label>
+    <input type="text" [(ngModel)]="email" name="email" />
+  </div>
+</form>
+
 
 <h2>Skills</h2>
 <form (submit)="addSkill(skill.value)">
@@ -14,6 +69,9 @@
   </div>
 </form>
 
+<!-- one way binding -->
 <ul>
-  <li *ngFor="let skill of skills; let i = index"> {{i+1}}. {{skill}}</li>
+  <li *ngFor="let skill of skills; let i = index"> {{i+1}}. {{skill}} <input type="button" value=" X "
+      (click)="removeSkill(skill)" />
+  </li>
 </ul>
